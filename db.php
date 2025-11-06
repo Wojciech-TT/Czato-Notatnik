@@ -1,4 +1,4 @@
-<?php
+<?php 
 $host = 'localhost';
 $dbname = 'notes_app';
 $username = 'root';
