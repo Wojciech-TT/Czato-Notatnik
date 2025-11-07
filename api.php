@@ -5,7 +5,7 @@ require_once 'jwt.php';
 
 /*
 |--------------------------------------------------------------------------
-| ROUTING —bez.htaccess, bez rewrite
+| ROUTING — bez.htaccess, bez rewrite
 |--------------------------------------------------------------------------
 | Działa dla:
 |  - api.php/notes
