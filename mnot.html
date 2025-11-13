@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="pl">
+<head><meta charset="utf-8"><title>Moja notatka</title></head>
+<body>
+  <h1>Moja notatka</h1>
+  <p>Zalogowany jako: <strong id="who"></strong> (<span id="role"></span>)</p>
+
+  <nav>
+    <a href="chat.html">Czat</a> |
+    <a href="mnot.html">Notatka</a> |
+    <span id="teacherLink"></span>
+    <button id="logoutBtn">Wyloguj</button>
+  </nav>
+
+  <textarea id="note" rows="10" cols="60" placeholder="Twoje prywatne notatki..."></textarea>
+  <div><button id="saveNote">Zapisz notatkę</button></div>
+
+  <script>
+    const user = localStorage.getItem('app_user');
+    const role = localStorage.getItem('app_role');
+    if (!user || !role) window.location.href = 'login.html';
+
+    document.getElementById('who').textContent = user;
+    document.getElementById('role').textContent = role;
+    if (role === 'teacher') {
+      document.getElementById('teacherLink').innerHTML = '<a href="tnau.html">Panel nauczyciela</a> | ';
+    }
+
+    const noteKey = 'note_' + user;
+    const noteEl = document.getElementById('note');
+    const saved = localStorage.getItem(noteKey);
+    if (saved) noteEl.value = saved;
+
+    document.getElementById('saveNote').addEventListener('click', () => {
+      localStorage.setItem(noteKey, noteEl.value);
+      alert('Notatka zapisana lokalnie.');
+    });
+
+    document.getElementById('logoutBtn').addEventListener('click', () => {
+      localStorage.clear();
+      window.location.href = 'login.html';
+    });
+  </script>
+</body>
+</html>
