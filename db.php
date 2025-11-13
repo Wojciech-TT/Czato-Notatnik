@@ -1,6 +1,6 @@
 <?php 
 $host = 'localhost';
-$dbname = 'notes_app';
+$dbname = 'czato';
 $username = 'root';
 $password = '';
 
