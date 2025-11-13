@@ -11,27 +11,27 @@ function handleAuth($pdo, $method, $id)
 
     $input = json_decode(file_get_contents('php://input'), true);
     $name = trim($input['name'] ?? '');
-    $role = trim($input['role'] ?? '');
 
-    if ($name === '' || $role === '') {
+    if ($name === '') {
         http_response_code(400);
-        echo json_encode(['error' => 'Name and role required']);
+        echo json_encode(['error' => 'Name required']);
         return;
     }
 
-    // Sprawdzamy, czy użytkownik istnieje
-    $stmt = $pdo->prepare("SELECT * FROM users WHERE name = ? AND role = ?");
-    $stmt->execute([$name, $role]);
+    // Szukamy użytkownika po nazwisku
+    $stmt = $pdo->prepare("SELECT * FROM users WHERE name = ?");
+    $stmt->execute([$name]);
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
     if (!$user) {
-        // Tworzymy nowego użytkownika
+        // Domyślnie nowi użytkownicy to uczniowie
+        $defaultRole = 'student';
         $stmt = $pdo->prepare("INSERT INTO users (name, role) VALUES (?, ?)");
-        $stmt->execute([$name, $role]);
+        $stmt->execute([$name, $defaultRole]);
         $user = [
             'id' => $pdo->lastInsertId(),
             'name' => $name,
-            'role' => $role
+            'role' => $defaultRole
         ];
     }
 
@@ -40,8 +40,9 @@ function handleAuth($pdo, $method, $id)
         'id' => $user['id'],
         'name' => $user['name'],
         'role' => $user['role'],
-        'exp' => time() + 3600 * 12 // 12 godzin ważności
+        'exp' => time() + 3600 * 12 // 12 godzin
     ];
+
     $token = generateJWT($payload, $JWT_SECRET);
 
     echo json_encode([
