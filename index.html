@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Aplikacja lekcyjna – panel</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header>
+    <h1>Panel lekcji</h1>
+    <p>Zalogowany: <span id="who"></span> (<span id="role"></span>)</p>
+  </header>
+
+  <main class="container">
+    <section class="panel left">
+      <h2>Czat</h2>
+      <iframe src="chat.html"></iframe>
+    </section>
+
+    <section class="panel center">
+      <h2>Notatka</h2>
+      <iframe src="mnot.html"></iframe>
+    </section>
+
+    <section class="panel right">
+      <h2>Panel nauczyciela</h2>
+      <iframe src="tnau.html"></iframe>
+    </section>
+  </main>
+
+  <footer>
+    <button id="logoutBtn">Wyloguj</button>
+  </footer>
+
+  <script>
+    const user = localStorage.getItem('app_user');
+    const role = localStorage.getItem('app_role');
+    if (!user || !role) window.location.href = 'login.html';
+    document.getElementById('who').textContent = user;
+    document.getElementById('role').textContent = role;
+
+    // Jeśli uczeń – ukryj kolumnę nauczyciela
+    if (role !== 'teacher') {
+      document.querySelector('.right').style.display = 'none';
+      document.querySelector('.center').style.flex = '2'; // lekko poszerz notatkę
+    }
+
+    document.getElementById('logoutBtn').addEventListener('click', () => {
+      localStorage.clear();
+      window.location.href = 'login.html';
+    });
+  </script>
+
+</body>
+</html>
