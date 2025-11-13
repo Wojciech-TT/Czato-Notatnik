@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Logowanie</title>
+  <link rel="stylesheet" href="login.css">
+</head>
+<body>
+  <main>
+    <h1>Panel logowania</h1>
+
+    <form id="loginForm">
+      <label for="login">Login:</label><br />
+      <input type="text" id="login" required /><br /><br />
+
+      <label for="password">Hasło:</label><br />
+      <input type="password" id="password" required /><br /><br />
+
+      <button type="submit">Zaloguj</button>
+    </form>
+
+    <p id="info" style="color:red; font-weight:bold;"></p>
+    <p style="margin-top:1em;">
+      Testowe loginy: <strong>uczen / 1234</strong> oraz <strong>nauczyciel / abcd</strong>
+    </p>
+  </main>
+
+  <script>
+    const USERS = {
+      uczen: { password: '1234', role: 'student' },
+      nauczyciel: { password: 'abcd', role: 'teacher' }
+    };
+
+    const form = document.getElementById('loginForm');
+    const info = document.getElementById('info');
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const login = document.getElementById('login').value.trim();
+      const password = document.getElementById('password').value.trim();
+
+      const user = USERS[login];
+      if (user && user.password === password) {
+        localStorage.setItem('app_user', login);
+        localStorage.setItem('app_role', user.role);
+        window.location.href = 'chat.html';
+      } else {
+        info.textContent = 'Nieprawidłowy login lub hasło.';
+      }
+    });
+  </script>
+</body>
+</html>
