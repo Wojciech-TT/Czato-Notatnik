@@ -5,3 +5,8 @@
 footer {
     clear: both;
 }
+
+body {
+    background-color: antiquewhite;
+    text-align: center;
+}
