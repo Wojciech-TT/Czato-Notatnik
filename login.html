@@ -44,7 +44,7 @@
       if (user && user.password === password) {
         localStorage.setItem('app_user', login);
         localStorage.setItem('app_role', user.role);
-        window.location.href = 'chat.html';
+        window.location.href = 'index.html';
       } else {
         info.textContent = 'Nieprawidłowy login lub hasło.';
       }
