@@ -6,7 +6,7 @@ $user = $_SESSION['user'];
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && $user['role'] === 'teacher') {
     $content = $_POST['content'];
-    $conn->query("DELETE FROM board"); // uproszczenie: tylko jeden wpis
+    $conn->query("DELETE FROM board"); //  uproszczenie: tylko jeden wpis
     $stmt = $conn->prepare("INSERT INTO board (content) VALUES (?)");
     $stmt->bind_param("s", $content);
     $stmt->execute();

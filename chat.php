@@ -16,12 +16,12 @@ $messages = $conn->query("SELECT m.text, m.created_at, u.name, u.role
                           ORDER BY m.created_at DESC");
 ?>
 <!DOCTYPE html>
-<html lang="pl">
+<html lang="pl">  
 <head>
   <meta charset="UTF-8">
   <title>Czat</title>
 </head>
-<body>
+<body> 
   <h2>Witaj, <?php echo $user['name']; ?> (<?php echo $user['role']; ?>)</h2>
   <a href="board.php">Tablica nauczyciela</a> | 
   <a href="notes.php">Moje notatki</a> | 

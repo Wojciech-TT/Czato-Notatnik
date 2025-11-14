@@ -1,5 +1,5 @@
-<?php
-session_start();
+<?php 
+session_start(); 
 include "db.php";
 if (!isset($_SESSION['user'])) { header("Location: index.php"); exit; }
 $user = $_SESSION['user'];
