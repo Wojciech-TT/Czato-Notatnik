@@ -1,25 +1,28 @@
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
-  background: #f3f4f6;
-  color: #222;
+  font-family: "Comic Neue", Arial, sans-serif;
+  background: linear-gradient(135deg, #4e73df, #1cc88a);
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  color: #222;
 }
 
 header {
-  background: #004aad;
-  color: white;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(4px);
+  border-bottom: 3px solid #000;
   padding: 1rem;
   text-align: center;
+  margin-bottom: 10px;
 }
 
 header h1 {
   margin: 0;
+  font-weight: bold;
 }
 
-.container {
+main.container {
   flex: 1;
   display: flex;
   gap: 1rem;
@@ -29,53 +32,50 @@ header h1 {
 
 .panel {
   flex: 1;
-  background: white;
+  background: rgba(255, 255, 255, 0.90);
   border-radius: 10px;
-  box-shadow: 0 0 5px rgba(0,0,0,0.2);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
   display: flex;
   flex-direction: column;
   overflow: hidden;
+  border: 2px solid #000;
 }
 
 .panel h2 {
   text-align: center;
-  background: #e6e6e6;
+  background: #ffffff;
   margin: 0;
-  padding: 0.5rem;
-  font-size: 1.1rem;
-  border-bottom: 1px solid #ccc;
+  padding: 0.7rem;
+  font-size: 1.2rem;
+  border-bottom: 2px solid #000;
+  font-weight: bold;
 }
 
 .panel iframe {
   flex: 1;
   width: 100%;
   border: none;
+  background: #fafafa;
 }
 
 footer {
   text-align: center;
   padding: 1rem;
-  background: #e6e6e6;
+  background: rgba(255, 255, 255, 0.85);
+  border-top: 3px solid #000;
 }
 
 button {
-  background: #004aad;
-  color: white;
-  border: none;
-  padding: 0.5rem 1rem;
   border-radius: 6px;
-  cursor: pointer;
-  font-size: 1rem;
-}
-
-button:hover {
-  background: #0066ff;
+  padding: 0.6rem 1.2rem;
+  font-size: 1.1rem;
 }
 
 @media (max-width: 900px) {
   .container {
     flex-direction: column;
   }
+
   .panel {
     height: 400px;
   }

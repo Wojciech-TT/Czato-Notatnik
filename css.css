@@ -1,5 +1,5 @@
 * {
-    font-family: georgia;
+    font-family: arial;
 }
 
 footer {
@@ -7,6 +7,6 @@ footer {
 }
 
 body {
-    background-color: antiquewhite;
+    background:#fff;
     text-align: center;
 }

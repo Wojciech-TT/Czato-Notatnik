@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="pl">
 <head><meta charset="utf-8"><title>Moja notatka</title></head>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.3/dist/sketchy/bootstrap.min.css">
 <link rel="stylesheet" href="css.css">
 <body>
   <h1>Moja notatka</h1>
@@ -10,12 +11,11 @@
     <a href="chat.html">Czat</a> |
     <a href="mnot.html">Notatka</a> |
     <span id="teacherLink"></span>
-    <button id="logoutBtn">Wyloguj</button>
+    <button class="btn btn-primary">Wyloguj </button>
   </nav>
 
   <textarea id="note" rows="10" cols="60" placeholder="Twoje prywatne notatki..."></textarea>
-  <div><button id="saveNote">Zapisz notatkę</button></div>
-
+  <button class="btn btn-primary">Zapisz notatkę</button>
   <script>
     const user = localStorage.getItem('app_user');
     const role = localStorage.getItem('app_role');

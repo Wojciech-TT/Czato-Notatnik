@@ -1,18 +1,18 @@
 <!doctype html>
 <html lang="pl">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Aplikacja lekcyjna – panel</title>
+
+  <!-- Bootswatch Sketchy -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.3/dist/sketchy/bootstrap.min.css">
+
+  <!-- Twój osobny CSS -->
   <link rel="stylesheet" href="style.css">
-  <style>
-    body { font-family: Arial, sans-serif; margin:0; padding:0; }
-    header, footer { background:#eee; padding:1em; }
-    main.container { display:flex; gap:10px; padding:10px; }
-    section.panel { flex:1; border:1px solid #ccc; padding:10px; }
-    iframe { width:100%; height:300px; border:1px solid #aaa; }
-  </style>
 </head>
+
 <body>
 
   <header>
@@ -38,7 +38,7 @@
   </main>
 
   <footer>
-    <button id="logoutBtn">Wyloguj</button>
+    <button id="logoutBtn" class="btn btn-primary">Wyloguj</button>
   </footer>
 
   <script>
@@ -49,6 +49,7 @@
 
     const user = localStorage.getItem('app_user');
     const role = localStorage.getItem('app_role');
+
     if (!user || !role) window.location.href = 'login.html';
 
     document.getElementById('who').textContent = user;
@@ -66,4 +67,5 @@
   </script>
 
 </body>
+
 </html>
