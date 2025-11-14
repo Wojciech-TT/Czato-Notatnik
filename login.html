@@ -5,25 +5,36 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Logowanie</title>
   <link rel="stylesheet" href="login.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.2/dist/sketchy/bootstrap.min.css">
 </head>
 <body>
   <main>
     <h1>Panel logowania</h1>
 
+    <h1 class="mb-4">Logowanie</h1>
+
+    
     <form id="loginForm">
-      <label for="login">Login:</label><br />
-      <input type="text" id="login" required /><br /><br />
 
-      <label for="password">Hasło:</label><br />
-      <input type="password" id="password" required /><br /><br />
+      <div class="mb-3">
+        <label for="login" class="form-label fw-semibold">Login:</label>
+        <input type="text" id="login" class="form-control" required>
+      </div>
 
-      <button type="submit">Zaloguj</button>
+      <div class="mb-3">
+        <label for="password" class="form-label fw-semibold">Hasło:</label>
+        <input type="password" id="password" class="form-control" required>
+      </div>
+
+      <button type="submit" class="btn btn-info w-100">Zaloguj</button>
+
+      <p id="info" class="mt-3 text-danger fw-bold"></p>
+
+      <p class="mt-3">
+        Testowe loginy: <strong>uczen / 1234</strong> oraz <strong>nauczyciel / abcd</strong>
+      </p>
+
     </form>
-
-    <p id="info" style="color:red; font-weight:bold;"></p>
-    <p style="margin-top:1em;">
-      Testowe loginy: <strong>uczen / 1234</strong> oraz <strong>nauczyciel / abcd</strong>
-    </p>
   </main>
 
   <script>
