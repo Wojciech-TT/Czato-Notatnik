@@ -16,26 +16,57 @@ $messages = $conn->query("SELECT m.text, m.created_at, u.name, u.role
                           ORDER BY m.created_at DESC");
 ?>
 <!DOCTYPE html>
-<html lang="pl">  
+<html lang="pl">
 <head>
-  <meta charset="UTF-8">
-  <title>Czat</title>
+    <meta charset="UTF-8">
+    <title>Czat</title>
+
+    <!-- Bootswatch Sketchy -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.2/dist/sketchy/bootstrap.min.css">
+
+    <!-- Twój osobny plik CSS -->
+    <link rel="stylesheet" href="style.css">
 </head>
-<body> 
-  <h2>Witaj, <?php echo $user['name']; ?> (<?php echo $user['role']; ?>)</h2>
-  <a href="board.php">Tablica nauczyciela</a> | 
-  <a href="notes.php">Moje notatki</a> | 
-  <a href="logout.php">Wyloguj</a>
-  <hr>
-  <form method="POST">
-    <input type="text" name="text" placeholder="Twoja wiadomość" required>
-    <button type="submit">Wyślij</button>
-  </form>
-  <h3>Wiadomości:</h3>
-  <?php while($row = $messages->fetch_assoc()): ?>
-    <p><b><?php echo $row['name']; ?> (<?php echo $row['role']; ?>):</b> 
-       <?php echo $row['text']; ?> 
-       <i><?php echo $row['created_at']; ?></i></p>
-  <?php endwhile; ?>
+<body>
+
+<div class="chat-container">
+
+    <h2 class="text-center mb-3">
+        Witaj, <strong><?php echo $user['name']; ?></strong>  
+        <span class="badge text-bg-info"><?php echo $user['role']; ?></span>
+    </h2>
+
+    <nav class="mb-3 text-center">
+        <a href="board.php" class="btn btn-outline-primary btn-sm">Tablica nauczyciela</a>
+        <a href="notes.php" class="btn btn-outline-secondary btn-sm">Moje notatki</a>
+        <a href="logout.php" class="btn btn-danger btn-sm">Wyloguj</a>
+    </nav>
+
+    <form method="POST" class="mb-4">
+        <div class="input-group">
+            <input type="text" name="text" class="form-control" placeholder="Twoja wiadomość..." required>
+            <button class="btn btn-success">Wyślij</button>
+        </div>
+    </form>
+
+    <h4>Wiadomości:</h4>
+
+    <div class="message-box">
+        <?php while($row = $messages->fetch_assoc()): ?>
+            <div class="message">
+                <div class="msg-header">
+                    <?php echo $row['name']; ?> 
+                    <span class="badge bg-warning"><?php echo $row['role']; ?></span>
+                </div>
+                <div><?php echo $row['text']; ?></div>
+                <div class="msg-time">
+                    <?php echo $row['created_at']; ?>
+                </div>
+            </div>
+        <?php endwhile; ?>
+    </div>
+
+</div>
+
 </body>
 </html>
