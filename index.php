@@ -51,10 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       }
       ?>
 
-      <p class="mt-4 text-center">
-        Testowe loginy: <strong>uczen / 1234</strong> &nbsp; | &nbsp; <strong>nauczyciel / abcd</strong>
-      </p>
-
+      
     </form>
   </main>
 </body>
