@@ -23,14 +23,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
   <meta charset="UTF-8">
   <title>Logowanie</title>
-  <link rel="stylesheet" href="style.css">
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body>
-  <h2>Logowanie</h2>
-  <form method="POST">
-    <input type="text" name="name" placeholder="Podaj imię" required>
-    <button type="submit">Zaloguj</button>
-  </form>
-  <?php if(isset($error)) echo "<p style='color:red'>$error</p>"; ?>
+<body class="bg-light d-flex align-items-center justify-content-center vh-100">
+
+  <div class="card shadow p-4" style="max-width: 400px; width: 100%;">
+    <h3 class="text-center mb-3">Logowanie</h3>
+    <form method="POST">
+      <div class="mb-3">
+        <input type="text" name="name" class="form-control" placeholder="Podaj imię" required>
+      </div>
+      <button type="submit" class="btn btn-primary w-100">Zaloguj</button>
+    </form>
+    <?php if(isset($error)) echo "<div class='alert alert-danger mt-3'>$error</div>"; ?>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
