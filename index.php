@@ -38,7 +38,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <input type="text" id="login" name="login" class="form-control" required>
       </div>
 
-      
+      <div class="mb-3">
+        <label for="password" class="form-label fw-semibold">Hasło:</label>
+        <input type="password" id="password" name="password" class="form-control" required>
+      </div>
 
       <button type="submit" class="btn btn-info w-100">Zaloguj</button>
 
