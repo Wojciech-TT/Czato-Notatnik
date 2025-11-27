@@ -1,12 +1,42 @@
-* {
-    font-family: arial;
-}
-
-footer {
-    clear: both;
-}
-
 body {
-    background:#fff;
-    text-align: center;
+    background: #f7f7f7;
+    font-family: "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+/* Kontener główny — delikatnie wycentrowany */
+.container {
+    max-width: 800px;
+}
+
+/* Karty — lekkie podbicie stylu Sketchy */
+.card {
+    border-radius: 10px;
+}
+
+/* Wyświetlana treść tablicy */
+.card-text {
+    font-size: 1.1rem;
+    white-space: pre-wrap; /* zachowuje entery */
+}
+
+/* Formularz */
+textarea.form-control {
+    resize: vertical;
+    font-size: 1rem;
+}
+
+/* Przyciski */
+.btn-success {
+    font-size: 1.1rem;
+    padding: 10px;
+}
+
+/* Nagłówek */
+h2 {
+    font-weight: 700;
+}
+
+/* Link powrotu */
+.btn-outline-primary {
+    font-size: 1rem;
 }
