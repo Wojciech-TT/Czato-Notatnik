@@ -21,6 +21,23 @@ $messages = $conn->query("SELECT m.text, m.created_at, u.name, u.role
   <meta charset="UTF-8">
   <title>Czat</title>
 </head>
+<script>
+function loadMessages() {
+    fetch("http://192.168.0.10/api/get_messages.php")
+        .then(r => r.json())
+        .then(data => {
+            let html = "";
+            data.forEach(msg => {
+                html += `<p><b>${msg.name} (${msg.role}):</b> ${msg.text} <i>${msg.created_at}</i></p>`;
+            });
+            document.getElementById("messages").innerHTML = html;
+        });
+}
+
+setInterval(loadMessages, 2000);
+loadMessages();
+</script>
+
 <body> 
   <h2>Witaj, <?php echo $user['name']; ?> (<?php echo $user['role']; ?>)</h2>
   <a href="board.php">Tablica nauczyciela</a> | 
@@ -32,10 +49,6 @@ $messages = $conn->query("SELECT m.text, m.created_at, u.name, u.role
     <button type="submit">Wyślij</button>
   </form>
   <h3>Wiadomości:</h3>
-  <?php while($row = $messages->fetch_assoc()): ?>
-    <p><b><?php echo $row['name']; ?> (<?php echo $row['role']; ?>):</b> 
-       <?php echo $row['text']; ?> 
-       <i><?php echo $row['created_at']; ?></i></p>
-  <?php endwhile; ?>
+    <div id="messages"></div>
 </body>
 </html>

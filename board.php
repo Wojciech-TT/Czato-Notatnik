@@ -16,13 +16,27 @@ $board = $conn->query("SELECT * FROM board ORDER BY updated_at DESC LIMIT 1")->f
 <!DOCTYPE html>
 <html lang="pl">
 <head><meta charset="UTF-8"><title>Tablica nauczyciela</title></head>
+<script>
+function loadBoard() {
+    fetch("http://192.168.0.10/api/get_messages.php")
+        .then(r => r.json())
+        .then(data => {
+            document.getElementById("board").innerHTML = data.content || "Brak treści";
+        });
+}
+
+setInterval(loadBoard, 2000);
+loadBoard();
+</script>
+
 <body>
   <h2>Tablica nauczyciela</h2>
   <a href="chat.php">Powrót do czatu</a>
   <hr>
-  <div style="border:1px solid #000; padding:10px;">
-    <?php echo $board ? $board['content'] : "Brak treści"; ?>
-  </div>
+  <div id="board" style="border:1px solid #000; padding:10px;">
+    Ładowanie...
+</div>
+
   <?php if($user['role'] === 'teacher'): ?>
     <form method="POST">
       <textarea name="content" rows="4" cols="50"><?php echo $board['content'] ?? ""; ?></textarea>
