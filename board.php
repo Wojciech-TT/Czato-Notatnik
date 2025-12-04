@@ -18,7 +18,7 @@ $board = $conn->query("SELECT * FROM board ORDER BY updated_at DESC LIMIT 1")->f
 <head><meta charset="UTF-8"><title>Tablica nauczyciela</title></head>
 <script>
 function loadBoard() {
-    fetch("http://192.168.0.10/api/get_messages.php")
+    fetch("http://10.103.8.105/api/get_messages.php")
         .then(r => r.json())
         .then(data => {
             document.getElementById("board").innerHTML = data.content || "Brak treści";

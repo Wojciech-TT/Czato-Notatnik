@@ -23,7 +23,7 @@ $messages = $conn->query("SELECT m.text, m.created_at, u.name, u.role
 </head>
 <script>
 function loadMessages() {
-    fetch("http://192.168.0.10/api/get_messages.php")
+    fetch("http://10.103.8.105/api/get_messages.php")
         .then(r => r.json())
         .then(data => {
             let html = "";
