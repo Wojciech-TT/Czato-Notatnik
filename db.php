@@ -1,6 +1,6 @@
 <?php
 $host = "10.103.8.105";
-$user = "root";
+$user = "root1";
 $pass = "";
 $db   = "czato"; 
 
